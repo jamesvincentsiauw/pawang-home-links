@@ -10,11 +10,11 @@ One finding from an audit of [pawang.io](https://pawang.io/) (23 September 2026)
 - The buttons cannot be opened in a new tab, middle-clicked, or copied as a link.
 - Crawlers see no link from the homepage to `/courses` or `/tracks`, and no course names in the homepage HTML.
 
-`main` reproduces the pattern found on pawang.io. The fix lives in [pull request #1](https://github.com/jamesvincentsiauw/pawang-home-links/pull/1) so the diff is easy to read.
+The tag [`before-fix`](https://github.com/jamesvincentsiauw/pawang-home-links/tree/before-fix) reproduces the pattern found on pawang.io. [Pull request #1](https://github.com/jamesvincentsiauw/pawang-home-links/pull/1) (merged) holds the fix, so the diff is easy to read. `main` is the fixed version.
 
 ## The fix
 
-| | Before (`main`) | After (PR) |
+| | Before (`before-fix`) | After (`main`) |
 | --- | --- | --- |
 | CTA markup | `<button type="button">` + `navigateTo()` | `<a href="/courses">` through `NuxtLink` |
 | Catalog on the homepage | `onMounted` + `$fetch`, skeleton in server HTML | `useFetch` awaited on the server, cards in server HTML |
@@ -44,7 +44,7 @@ Then open http://localhost:3000.
 pnpm test
 ```
 
-The tests fetch the server-rendered homepage and assert that the CTAs are links with real destinations and that course and track names are present. They fail on `main` and pass on the fix branch.
+The tests fetch the server-rendered homepage and assert that the CTAs are links with real destinations and that course and track names are present. They fail at `before-fix` and pass on `main`.
 
 By hand, with the dev server running:
 
@@ -56,7 +56,7 @@ curl -s http://localhost:3000/ | grep -oE '<(a|button)[^>]*>[^<]*Belajar Sekaran
 curl -s http://localhost:3000/ | grep -c 'href="/courses/'
 ```
 
-In the browser: right-click "Belajar Sekarang". On `main` there is no "Open link in new tab"; on the fix branch there is.
+In the browser: right-click "Belajar Sekarang". At `before-fix` there is no "Open link in new tab"; on `main` there is.
 
 ## What is and is not in scope
 
