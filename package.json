@@ -20,5 +20,10 @@
     "@vue/test-utils": "^2.5.1",
     "happy-dom": "^20.14.5",
     "vitest": "^5.0.1"
+  },
+  "pnpm": {
+    "overrides": {
+      "rolldown": "1.2.8"
+    }
   }
 }

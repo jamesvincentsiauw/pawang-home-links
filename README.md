@@ -38,6 +38,8 @@ pnpm dev
 
 Then open http://localhost:3000.
 
+`package.json` pins rolldown to 1.2.8 through a pnpm override. Rolldown 1.2.9 fails to load its WebAssembly binding inside StackBlitz's WebContainer ([rolldown#10938](https://github.com/rolldown/rolldown/issues/10938)); the fix is merged but not yet released. Remove the override once a newer rolldown ships.
+
 ## Verify
 
 ```sh
