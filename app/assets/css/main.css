@@ -146,3 +146,20 @@ section { padding: 56px 0; }
 .detail p { color: var(--text-2); font-size: 17px; }
 .detail .back { display: inline-block; margin-bottom: 24px; font-size: 14px; }
 .detail .meta { display: flex; gap: 12px; align-items: center; font-size: 13px; color: var(--text-2); }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+section[id] { scroll-margin-top: 16px; }
+
+.state { color: var(--text-2); margin: 0; }
+.link {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  font-weight: 700;
+  color: var(--primary-strong);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.link:focus-visible { outline: 2px solid var(--primary-strong); outline-offset: 2px; }
