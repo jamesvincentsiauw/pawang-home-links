@@ -1,0 +1,148 @@
+/* Tokens follow pawang.io's design file (alpha): green primary, white surfaces, no shadows. */
+:root {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #edf1f7;
+  --border: #e5e9f0;
+  --text: #0f172a;
+  --text-2: #64748b;
+  --primary: #069871;
+  --primary-strong: #057a5b;
+  --primary-tint: #e6f4ef;
+  --primary-fg: #ffffff;
+  --radius-card: 20px;
+  --radius-pill: 9999px;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+a { color: inherit; }
+
+h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.02em; }
+
+.shell { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+.nav nav { display: flex; gap: 24px; }
+.nav nav a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 14px; }
+.nav nav a.router-link-active { color: var(--primary-strong); }
+.brand { font-family: var(--font-display); font-weight: 700; text-decoration: none; }
+
+.hero { padding: 96px 0 56px; max-width: 640px; }
+.hero h1 { font-size: clamp(2.125rem, 5vw, 3rem); line-height: 1.08; margin: 0 0 16px; }
+.hero p { font-size: 17px; color: var(--text-2); margin: 0 0 32px; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 20px;
+  border-radius: var(--radius-pill);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+.btn:focus-visible { outline: 2px solid var(--primary-strong); outline-offset: 2px; }
+.btn.primary { background: var(--primary); color: var(--primary-fg); }
+.btn.primary:hover { background: var(--primary-strong); }
+.btn.secondary { background: var(--surface-2); border-color: var(--border); color: var(--text); font-weight: 600; }
+.btn.secondary:hover { border-color: var(--primary); }
+
+section { padding: 56px 0; }
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.section-head h1, .section-head h2 { margin: 0 0 8px; font-size: 1.8rem; line-height: 1.15; }
+.section-head p { margin: 0; color: var(--text-2); max-width: 54ch; }
+
+.grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  text-decoration: none;
+  transition: border-color 120ms ease;
+}
+.card:hover, .card:focus-visible { border-color: var(--primary); outline: none; }
+.card h3 { margin: 0; font-size: 1.25rem; line-height: 1.2; }
+.card p { margin: 0; color: var(--text-2); font-size: 14px; }
+.card .meta {
+  margin-top: auto;
+  padding-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  font-size: 13px;
+  color: var(--text-2);
+}
+.badge {
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--primary-tint);
+  color: var(--primary-strong);
+  font-weight: 700;
+}
+
+.skeleton {
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.skeleton .bar {
+  height: 14px;
+  border-radius: 4px;
+  background: var(--surface-2);
+  animation: pulse 1.2s ease-in-out infinite;
+}
+.skeleton .bar.short { width: 40%; }
+@keyframes pulse { 50% { opacity: 0.45; } }
+@media (prefers-reduced-motion: reduce) { .skeleton .bar { animation: none; } }
+
+.detail { max-width: 640px; }
+.detail h1 { margin: 0 0 8px; font-size: 2rem; }
+.detail p { color: var(--text-2); font-size: 17px; }
+.detail .back { display: inline-block; margin-bottom: 24px; font-size: 14px; }
+.detail .meta { display: flex; gap: 12px; align-items: center; font-size: 13px; color: var(--text-2); }
